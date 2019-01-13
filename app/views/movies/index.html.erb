@@ -1,0 +1,12 @@
+<h1> <%= @movies.size %> Movies </h1>
+
+<ul>
+
+	<% @movies.each do |movie| %>
+		<li>
+		<h3> <%= movie.name %> </h3> Ticket price: <%=  number_to_currency(movie.price) %>,
+		Description: <%= movie.description %> , Ratings: <%= movie.ratings %>
+		</li>
+	<% end %>
+
+</ul>
