@@ -1,11 +1,12 @@
-<h1> <%= @movies.size %> Movies </h1>
+<h1> <%= pluralize(@movies.size, 'Movie') %> </h1>
 
 <ul>
 
 	<% @movies.each do |movie| %>
 		<li>
-		<h3> <%= movie.name %> </h3> Ticket price: <%=  number_to_currency(movie.price) %>,
-		Description: <%= movie.description %> , Ratings: <%= movie.ratings %>
+		<h3> <%= movie.name %> </h3> Ticket price: <%=  format_price( movie )%>,
+		Description: <%= truncate(movie.description, length: 30, seperator: " " )%> , Ratings: <%= movie.ratings %>
+		Show Time: <%= movie.show_time.to_s %>
 		</li>
 	<% end %>
 
