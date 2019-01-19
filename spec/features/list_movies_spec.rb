@@ -3,14 +3,22 @@ require "rails_helper"
 
 describe "View list of movies" do 
 	it "shows the movies list" do
-		event1 = Movie.create(name: "Movie 1", description: "ok" , ratings: 9, show_time: DateTime.now, price: 10)
-		event2 = Movie.create(name: "Movie 2", description: "ok" , ratings: 9, show_time: DateTime.now, price: 10)
+		movie1 = Movie.create(movie_attributes(price: 10.00))
+		movie2 = Movie.create(movie_attributes({name: "Movie 2", price: 20.00}))
 		
 		visit movies_url
 
 		expect(page).to have_text("2 Movies")
-		expect(page).to have_text(event1.name)
-		expect(page).to have_text(event2.name)
+		expect(page).to have_text(movie1.name)
+		expect(page).to have_text(movie1.description)
+		expect(page).to have_text(movie1.ratings)
+		expect(page).to have_text("Rs 10.00")
+
+
+		expect(page).to have_text(movie2.name)
+		expect(page).to have_text(movie2.description)
+		expect(page).to have_text(movie2.ratings)
+		expect(page).to have_text("Rs 20.00")
 	end
 	
 end
