@@ -1,0 +1,8 @@
+<h3> <%= @movie.name %> </h3> 
+Ticket price: <%=  format_price( @movie )%> </br>
+Description: <%= @movie.description%> </br>
+Ratings: <%= @movie.ratings %> </br>
+Show Time: <%= @movie.show_time.to_s %>
+
+</br>
+<%= link_to("Back to All Shows", movies_path) %>
