@@ -5,4 +5,6 @@ Ratings: <%= @movie.ratings %> </br>
 Show Time: <%= @movie.show_time.to_s %>
 
 </br>
-<%= link_to("Back to All Shows", movies_path) %>
+<%= link_to("Back to All Shows", movies_path) %> |
+<%= link_to("Edit", edit_movie_path) %> |
+<%= link_to("Delete", movie_path(@movie), method: :delete, data: {confirm: "Are you sure of deleting the movie?"}) %>
