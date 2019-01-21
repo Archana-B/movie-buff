@@ -5,9 +5,12 @@
 
 	<% @movies.each do |movie| %>
 		<li>
-		<h3> <%= link_to(movie.name, movie) %> </h3> Ticket price: <%=  format_price( movie )%>,
+		<%= image_tag movie.image_file_name %>		
+		<h3> <%= link_to(movie.name, movie) %> </h3> 
 		Description: <%= truncate(movie.description, length: 30, seperator: " " )%> , Ratings: <%= movie.ratings %>
 		Show Time: <%= movie.show_time.to_s %>
+		Ticket price: <%=  format_price( movie )%>
+		Seats available: <%= movie.capacity %>
 		</li>
 	<% end %>
 

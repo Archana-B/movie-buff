@@ -20,6 +20,14 @@
 		<%= f.number_field :price %>
 	</p>
 	<p>
+		<%= f.label :image_file_name %> </br>
+		<%= f.text_field :image_file_name, placeholder: "PNG, JPEG or GIF file name", size: 30 %>
+	</p>
+	<p>
+		<%= f.label :capacity %></br>
+		<%= f.number_field :capacity %>
+	</p>
+	<p>
 		<%= f.submit %>
 		<%= link_to "Cancel", movies_path %>
 	</p>
