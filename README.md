@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is basic Movie buff application built using ruby on rails as part of a hands-on course.
 
-Things you may want to cover:
+To run the application use below command:
+    rails s 
 
-* Ruby version
+To run test cases:
+    rspec -f d
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
