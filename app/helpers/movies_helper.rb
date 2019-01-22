@@ -12,4 +12,8 @@ module MoviesHelper
 		end
 		return image_tag "placeholder.png"
 	end
+
+	def get_ratings(movie)
+		pluralize(movie.average_stars, 'Star')
+	end
 end

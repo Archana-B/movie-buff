@@ -9,7 +9,7 @@
   </p>
   
   <h3 class="no-rule">
-    <%= @movie.ratings %> 
+    <%= get_ratings(@movie) %> 
   </h3>
   
   <h3>Capacity</h3>
@@ -26,6 +26,10 @@
   <p>
     <%= @movie.show_time %>
   </p>
+
+  <%= link_to "View Reviews", movie_reviews_path(@movie)%> 
+  
+  <%= link_to "Write Review", new_movie_review_path(@movie)%>
   
   <footer>
     <nav>

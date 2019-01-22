@@ -1,5 +1,5 @@
 <%= form_for(@movie) do |f| %>
-<%= render "layouts/errors" %>
+<%= render "shared/errors", object: @movie %>
   <fieldset>
     <ol>
       <li class="required">
@@ -9,10 +9,6 @@
       <li class="required">
         <%= f.label :description %>
         <%= f.text_area :description, cols: 40, rows: 7 %>
-      </li>
-      <li class="required">
-        <%= f.label :ratings %>
-        <%= f.text_field :ratings %>
       </li>
       <li class="required">
         <%= f.label :price %>

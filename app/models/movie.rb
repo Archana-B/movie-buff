@@ -1,8 +1,6 @@
 class Movie < ApplicationRecord
-
-	RATINGS = 1..5
 	
-	validates :name, :price, :capacity, :ratings, presence: true
+	validates :name, :price, :capacity, presence: true
 
 	validates :description, length: { minimum: 20 }
 
@@ -15,8 +13,6 @@ class Movie < ApplicationRecord
   		message: "must be a GIF, JPG, or PNG image"
 	}
 
-	validates :ratings, inclusion: {in: 1..5}
-
 	has_many :reviews, dependent: :destroy
 
 	def free?
@@ -25,5 +21,12 @@ class Movie < ApplicationRecord
 
 	def self.upcoming
 		where("show_time >= ?", Time.now).order("show_time")
+	end
+
+	def average_stars
+		if reviews.any?
+			return reviews.average(:stars).round(2)
+		end
+		return 0
 	end
 end

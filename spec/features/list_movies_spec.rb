@@ -11,13 +11,11 @@ describe "View list of movies" do
 		expect(page).to have_text("2 Movies")
 		expect(page).to have_text(movie1.name)
 		expect(page).to have_text(movie1.description)
-		expect(page).to have_text(movie1.ratings)
 		expect(page).to have_text("Rs 10.00")
 
 
 		expect(page).to have_text(movie2.name)
 		expect(page).to have_text(movie2.description)
-		expect(page).to have_text(movie2.ratings)
 		expect(page).to have_text("Rs 20.00")
 	end
 	
