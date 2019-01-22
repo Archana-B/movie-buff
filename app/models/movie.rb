@@ -17,6 +17,8 @@ class Movie < ApplicationRecord
 
 	validates :ratings, inclusion: {in: 1..5}
 
+	has_many :reviews, dependent: :destroy
+
 	def free?
 		price.nil? || price.blank? ||price.zero? 
 	end
