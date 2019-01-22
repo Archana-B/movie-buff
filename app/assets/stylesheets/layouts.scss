@@ -1,0 +1,21 @@
+$bg-color: #DC143C;
+$font-color: #FFFFFF;
+
+
+#header{
+	background: $bg-color;
+	color: $font-color;
+	height: 100px;
+	top: 0;
+	text-align: center;
+	font-size: 45px;
+	border-bottom: 10px solid darken($bg-color, 25%);
+}
+
+.sidebar{
+	background: $bg-color;
+	color: $font-color;
+	width: 300px;
+	float: right;
+	align: center;
+}

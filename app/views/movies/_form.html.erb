@@ -1,34 +1,39 @@
 <%= form_for(@movie) do |f| %>
-	<p>
-		<%= f.label :name %> </p> <br>
+<%= render "layouts/errors" %>
+  <fieldset>
+    <ol>
+      <li class="required">
+		<%= f.label :name %> 
 		<%= f.text_field :name, autofocus: true %>
-	</p>
-	<p>
-		<%= f.label :description %> </br>
-		<%= f.text_area :description, cols: 50, rows: 10 %>
-	</p>
-	<p>
-		<%= f.label :show_time %> </br>
-		<%= f.datetime_select :show_time %>
-	</p>
-	<p>
-		<%= f.label :ratings %> </br>
-		<%= f.text_field :ratings %>
-	</p>
-	<p>
-		<%= f.label :price %> </br>
-		<%= f.number_field :price %>
-	</p>
-	<p>
-		<%= f.label :image_file_name %> </br>
-		<%= f.text_field :image_file_name, placeholder: "PNG, JPEG or GIF file name", size: 30 %>
-	</p>
-	<p>
-		<%= f.label :capacity %></br>
-		<%= f.number_field :capacity %>
-	</p>
-	<p>
-		<%= f.submit %>
-		<%= link_to "Cancel", movies_path %>
-	</p>
+      </li>
+      <li class="required">
+        <%= f.label :description %>
+        <%= f.text_area :description, cols: 40, rows: 7 %>
+      </li>
+      <li class="required">
+        <%= f.label :ratings %>
+        <%= f.text_field :ratings %>
+      </li>
+      <li class="required">
+        <%= f.label :price %>
+        <%= f.text_field :price %>
+      </li>
+      <li class="required">
+        <%= f.label :show_time %>
+        <%= f.date_select :show_time %>
+      </li>
+      <li class="required">
+        <%= f.label :capacity %>
+        <%= f.number_field :capacity %>
+      </li>
+      <li class="required">
+        <%= f.label :image_file_name %>
+        <%= f.text_field :image_file_name, placeholder: "PNG, JPEG or GIF file name", size: 30 %>
+      </li>
+    </ol>
+    <p>
+      <%= f.submit %>
+      <%= link_to "Cancel", movies_path, class: 'button' %>
+    </p>
+  </fieldset>
 <% end %>

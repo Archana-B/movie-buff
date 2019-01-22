@@ -1,17 +1,34 @@
 <h1> <%= pluralize(@movies.size, 'Movie') %> </h1>
 
-<h4> <%= link_to "Add new Movie", new_movie_path %> </h4>
-<ul>
-
-	<% @movies.each do |movie| %>
-		<li>
-		<%= image_tag movie.image_file_name %>		
-		<h3> <%= link_to(movie.name, movie) %> </h3> 
-		Description: <%= truncate(movie.description, length: 30, seperator: " " )%> , Ratings: <%= movie.ratings %>
-		Show Time: <%= movie.show_time.to_s %>
-		Ticket price: <%=  format_price( movie )%>
-		Seats available: <%= movie.capacity %>
-		</li>
-	<% end %>
-
+<ul id="movies">
+  <% @movies.each do |movie| %>
+    <li>
+      <article class="movie">
+        <header>
+          <%= image_for(movie) %>
+          <h2><%= link_to movie.name, movie %></h2>
+        </header>
+        <p>
+          <%= truncate(movie.description, length: 50, separator: ' ') %>
+        </p>
+        <table>
+          <tr>
+            <th>Ratings</th>
+            <td><%= movie.ratings %></td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td><%= format_price(movie) %></td>
+          </tr>
+          <tr>
+            <th>Capacity</th>
+            <td><%= movie.capacity %></td>
+          </tr>
+        </table>
+        <footer>
+        </footer>
+      </article>
+    </li>
+  <% end %>
 </ul>
+

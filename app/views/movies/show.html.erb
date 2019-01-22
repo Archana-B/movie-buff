@@ -1,10 +1,38 @@
-<h3> <%= @movie.name %> </h3> 
-Ticket price: <%=  format_price( @movie )%> </br>
-Description: <%= @movie.description%> </br>
-Ratings: <%= @movie.ratings %> </br>
-Show Time: <%= @movie.show_time.to_s %>
+<article id="movie" class="movie">
+  <header>
+    <%= image_for(@movie) %>
+    <h1><%= @movie.name %></h1>
+  </header>
 
-</br>
-<%= link_to("Back to All Shows", movies_path) %> |
-<%= link_to("Edit", edit_movie_path) %> |
-<%= link_to("Delete", movie_path(@movie), method: :delete, data: {confirm: "Are you sure of deleting the movie?"}) %>
+  <p>
+    <%= @movie.description %>
+  </p>
+  
+  <h3 class="no-rule">
+    <%= @movie.ratings %> 
+  </h3>
+  
+  <h3>Capacity</h3>
+  <p>
+    <%= @movie.capacity %>
+  </p>
+  
+  <h3>Price</h3>
+  <p>
+    <%= format_price(@movie) %>
+  </p>
+  
+  <h3>Show Time</h3>
+  <p>
+    <%= @movie.show_time %>
+  </p>
+  
+  <footer>
+    <nav>
+      <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
+      <%= link_to 'Delete', @movie, 
+                  class: 'button',
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+    </nav>
+  </footer>
+</article>

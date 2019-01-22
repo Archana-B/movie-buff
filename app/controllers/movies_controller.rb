@@ -15,7 +15,11 @@ class MoviesController < ApplicationController
 	def update
 		@movie = Movie.find(params[:id])
 		@movie.update(movie_params)
-		redirect_to @movie
+		if @movie.errors.full_messages.any?
+			render :new
+		else
+			redirect_to @movie, notice: "Movie successfully updated"
+		end
 	end
 
 	def new
@@ -24,12 +28,16 @@ class MoviesController < ApplicationController
 
 	def create
 		@movie = Movie.create(movie_params)
-		redirect_to @movie
+		if @movie.errors.full_messages.any?
+			render :new
+		else
+			redirect_to @movie, notice: "Movie successfully created"
+		end	
 	end
 
 	def destroy
 		Movie.delete(params[:id])
-		redirect_to movies_path
+		redirect_to movies_path, notice: "Movie successfully deleted"
 	end
 
 end
