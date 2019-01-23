@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
 		@movie = Movie.find(params[:id])
 		@movie.update(movie_params)
 		if @movie.errors.full_messages.any?
-			render :new
+			render :edit
 		else
 			redirect_to @movie, notice: "Movie successfully updated"
 		end
