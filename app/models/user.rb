@@ -5,4 +5,8 @@ class User < ApplicationRecord
 
   validates :email, format: { with: /\A\S+@\S+.com\z/, message: 'not a valid one' }, uniqueness: { case_sensitive: false }
 
+  def self.authenticate(email, password)
+    user = User.find_by(email: email)
+    user && user.authenticate(password)
+  end
 end
