@@ -1,5 +1,10 @@
 class Movie < ApplicationRecord
-	
+	has_many :reviews, dependent: :destroy
+
+	has_many :favorites, dependent: :destroy
+
+	has_many :fans, through: :favorites, source: :user
+
 	validates :name, :price, :capacity, presence: true
 
 	validates :description, length: { minimum: 20 }
@@ -12,8 +17,6 @@ class Movie < ApplicationRecord
  		with:    /\w+\.(gif|jpg|png)\z/i,
   		message: "must be a GIF, JPG, or PNG image"
 	}
-
-	has_many :reviews, dependent: :destroy
 
 	def free?
 		price.nil? || price.blank? ||price.zero? 

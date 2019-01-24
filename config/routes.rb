@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "signout" => "sessions#destroy"
   resources :movies do
     resources :reviews
+    resources :favorites    
   end
   resources :users
   resource :session

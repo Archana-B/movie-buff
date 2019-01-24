@@ -27,6 +27,29 @@
     <%= @movie.show_time %>
   </p>
 
+  <% if current_user %>
+    <% if @current_favorite %>
+      <%= button_to 'Not My Favorite', movie_favorite_path(@movie, @current_favorite), method: :delete %>
+    <% else %>
+     <%= button_to 'My Favorite', movie_favorites_path(@movie) %>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= pluralize(@fans.size, 'Fan') %>
+  </p>
+
+  <% if @fans.any? %>
+    <h3>Fans</h3>
+    <ul>
+      <% @fans.each do |user| %>
+        <li>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <%= link_to "View Reviews", movie_reviews_path(@movie)%> 
   
   <%= link_to "Write Review", new_movie_review_path(@movie)%>
