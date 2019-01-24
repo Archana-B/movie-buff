@@ -1,3 +1,5 @@
+<% content_for(:title, @movie.name) %>
+
 <article id="movie" class="movie">
   <header>
     <%= image_for(@movie) %>
@@ -35,24 +37,31 @@
     <% end %>
   <% end %>
 
-  <p>
-    <%= pluralize(@fans.size, 'Fan') %>
-  </p>
+  <p> <%= link_to "View Reviews", movie_reviews_path(@movie)%> </p> 
+  
+  <p> <%= link_to "Write Review", new_movie_review_path(@movie)%> </p>
 
-  <% if @fans.any? %>
-    <h3>Fans</h3>
-    <ul>
-      <% @fans.each do |user| %>
-        <li>
-          <%= link_to user.name, user %>
-        </li>
-      <% end %>
-    </ul>
+  <% content_for(:side) do %>
+    <% if @genres.any? %>
+      <h3>Genres</h3>
+      <ul>
+        <% @genres.each do |genre| %>
+          <li><%= genre.name %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if @fans.any? %>
+      <h3>Fans</h3>
+      <ul>
+        <% @fans.each do |user| %>
+          <li>
+            <%= link_to user.name, user %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
-  
-  <%= link_to "View Reviews", movie_reviews_path(@movie)%> 
-  
-  <%= link_to "Write Review", new_movie_review_path(@movie)%>
   
   <footer>
     <nav>

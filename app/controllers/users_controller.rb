@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
         session.delete(:user_id)
-        redirect_to users_path, notice: "Account successfully deleted!"
+        redirect_to movies_path, notice: "Account successfully deleted!"
     end
 
 private

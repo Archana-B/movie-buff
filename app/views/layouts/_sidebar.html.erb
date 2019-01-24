@@ -2,7 +2,16 @@
   <nav>
     <ul>
       <li class="all-movies">
-        <%= link_to 'All Movies', movies_path, class: 'button' %>
+        <%= link_to 'Upcoming', movies_path, class: 'button' %>
+      </li>
+      <li class="all-movies">
+        <%= link_to 'Released', movies_filter_path('released'), class: 'button active' %>
+      </li>
+      <li class="all-movies">
+        <%= link_to 'Recent', movies_filter_path('recent'), class: 'button' %>
+      </li>
+      <li class="all-movies">
+        <%= link_to 'Free', movies_filter_path('free'), class: 'button' %>
       </li>
       <% if current_user_admin? %>
         <li class="create-movie">
@@ -11,4 +20,5 @@
       <% end %>
     </ul>
   </nav>
+  <%= content_for(:side) %>
 </aside>

@@ -26,6 +26,9 @@
         <%= f.label :image_file_name %>
         <%= f.text_field :image_file_name, placeholder: "PNG, JPEG or GIF file name", size: 30 %>
       </li>
+      <li class="required">
+        <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name)%>
+      </li>
     </ol>
     <p>
       <%= f.submit %>
